@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+    <title>Результат - Задача 5.2</title>
+{% endblock %}
+
+{% block style %}
+  <link href='{% static "css/base.css" %}' rel="stylesheet" crossorigin="anonymous">
+{% endblock %}
+
+{% block breadcrumb %}
+   <div class="container" style="margin-top: 3em;">
+      <ol class="breadcrumb text">
+        <li class="breadcrumb-item"><a href="{% url 'main:index' %}">Главная</a></li>
+        <li class="breadcrumb-item" aria-current="page"><a href="{% url 'main:task1' %}">Подборка площади сечения нулевого провода</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Результат</li>
+      </ol>
+   </div>
+{% endblock %}
+
+{% block content %}
+    <div class="container" style="margin-top: 5em;">
+        <h2 class="mb-3 text-center">Цель расчета</h2>
+        <p class="text text-center" style="border: solid; border-color: blue; border-width: 0.1em; padding: 2em; border-radius: 100px;"><strong>Цель расчета зануления – определить сечение защитного нулевого провода,
+            удовлетворяющее условию срабатывания максимальной токовой защиты, при известных
+            остальных параметрах сети и заданных параметрах автоматического выключателя или
+            плавкой вставки.</strong></p>
+        <h2 class="mb-3 text-center">Исходные данные</h2>
+        <p class="text text-center" style="border: solid; border-color: red; border-width: 0.1em; padding: 2em; border-radius: 100px;"><strong>Подобрать площадь сечения нулевого провода, удовлетворяющая условию
+            срабатывания максимальной токовой защиты, распределительного щитка лаборатории, к
+            которому подведена линия (длиной l = <u>{{ result2.task.length }}</u>) от понижающего трансформатора с 10 кВ до
+            0,4 кВ, мощностью <u>{{ result2.task.power }}</u> кВ·А, соединение обмоток <u>{{ result2.task.get_scheme_display }}</u>. Параметры «фазы» -- напряжение
+            <u>{{ result2.task.phase_voltage }}</u> В, площадь сечения провода из <u>{{ result2.task.get_phase_material_display }}</u> <u>{{ result2.task.phase_square }}</u> мм2. Расстояние между проводниками линии –
+            <u>{{ result2.task.distance_between_conductors }}</u> м. Параметры устройства защиты – тип <u>{{ result2.task.get_type_electro_display }}</u>, номинальный ток Iном = <u>{{ result2.task.amperage_nominal }}</u> А.</strong>
+        </p>
+        <h2 class="mb-3 text-center">Результат</h2>
+        <div class="mb-5">
+            {% if result2.square != -100 %}
+                <p class="text text-center" style="border: solid; border-color: green; border-width: 0.1em; padding: 2em; border-radius: 100px;">
+                    <strong>В результате расчета определена необходимая площадь сечения нулевого провода Sн = <u>{{ result2.square }}</u> мм 2
+                    , которая обеспечит срабатывание автоматического выключателя.<strong>
+                </p>
+            {% else %}
+                <p class="text text-center" style="border: solid; border-color: green; border-width: 0.1em; padding: 2em; border-radius: 100px;">
+                    <strong>В результате расчета определено, что при любой площади сечения нулевого провода
+                    ,обеспечено срабатывание автоматического выключателя не будет.<strong>
+                </p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

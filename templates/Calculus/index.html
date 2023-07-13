@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+    <title>Главная</title>
+{% endblock %}
+
+{% block style %}
+  <link href='{% static "css/comand.css" %}' rel="stylesheet" crossorigin="anonymous">
+{% endblock %}
+
+{% block content %}
+    <div class="row" style="margin-top: 3em;">
+      <div class="col-12 col-lg-6 mb-5">
+        <div class="card" style="width: 100%;">
+          <img src='{% static "img/task2.jpg" %}' class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Проектировка защитного заземление</h5>
+            <p class="card-text">Цель расчета заземления – определить параметры заземляющего устройства: число и
+              длину вертикальных элементов (стержней), длину горизонтальных элементов
+              (соединительных полос) и разместить заземлители на плане электроустановки, исходя из
+              значений допустимых сопротивления и максимального потенциала заземлителя.</p>
+            <a href="{% url 'main:task1' %}" class="btn btn-primary">Перейти</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-lg-6">
+        <div class="card" style="width: 100%;">
+          <img src='{% static "img/task1.jpg" %}' class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Подборка площади сечения нулевого провода</h5>
+            <p class="card-text">Цель расчета зануления – определить сечение защитного нулевого провода,
+              удовлетворяющее условию срабатывания максимальной токовой защиты, при известных
+              остальных параметрах сети и заданных параметрах автоматического выключателя или
+              плавкой вставки.</p>
+            <a href="{% url 'main:task2' %}" class="btn btn-primary">Перейти</a>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}

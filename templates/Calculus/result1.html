@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+    <title>Результат - Задача 5.1</title>
+{% endblock %}
+
+{% block style %}
+  <link href='{% static "css/base.css" %}' rel="stylesheet" crossorigin="anonymous">
+{% endblock %}
+
+{% block breadcrumb %}
+   <div class="container" style="margin-top: 3em;">
+      <ol class="breadcrumb text">
+        <li class="breadcrumb-item"><a href="{% url 'main:index' %}">Главная</a></li>
+        <li class="breadcrumb-item" aria-current="page"><a href="{% url 'main:task1' %}">Проектировка защитного заземление</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Результат</li>
+      </ol>
+   </div>
+{% endblock %}
+
+{% block content %}
+    <div class="container" style="margin-top: 5em;">
+        <h2 class="mb-3 text-center">Цель расчета</h2>
+        <p class="text text-center" style="border: solid; border-color: blue; border-width: 0.1em; padding: 2em; border-radius: 100px;"><strong>Цель расчета заземления – определить параметры заземляющего устройства: число и
+            длину вертикальных элементов (стержней), длину горизонтальных элементов
+            (соединительных полос) и разместить заземлители на плане электроустановки, исходя из
+            значений допустимых сопротивления и максимального потенциала заземлителя.</strong></p>
+        <h2 class="mb-3 text-center">Исходные данные</h2>
+        <p class="text text-center" style="border: solid; border-color: red; border-width: 0.1em; padding: 2em; border-radius: 100px;"><strong>Спроектировать защитное заземление оборудования лаборатории, находящейся в
+            <u>{{ result1.task.get_climate_zone_display }}</u>
+          климатической зоне. Заземляющее устройство заглублено на глубину 0.8 м. Грунт –
+          <u>{{ result1.task.get_soil_display }}</u>.
+          Для вертикальных заземлителей длиной lc = 3 м использовать стальные трубы диаметром
+          d = 40 мм. Для соединительной полосы использовать стальную шину сечением 40 х 4 мм.
+          Заземлители расположить
+          <u>{{ result1.task.get_scheme_display }}</u>.
+          Источник тока (трансформатор) мощностью
+          <u>{{ result1.task.power }}</u> кВ·А подает
+          напряжение в лабораторию 400 В</strong>.
+        </p>
+        <h2 class="mb-3 text-center">Результат</h2>
+        <div class="mb-5">
+            <p class="text text-center" style="border: solid; border-color: green; border-width: 0.1em; padding: 2em; border-radius: 100px;">
+                <strong>Параметры заземляющего устройства: вертикальные элементы – трубы, диаметром
+                    <u>{{ result1.diameter }}</u> мм и <u>{{ result1.vertical_length }}</u> по 3 м, в количестве <u>{{ result1.num_accurate }}</u> шт. расположены <u>{{ result1.scheme }}</u>. Расстояние между
+                    вертикальными элементами – <u>{{ result1.distance_between }}</u>. Горизонтальный элемент – полоса, сечением <u>{{ result1.section }}</u>х4 мм,
+                    длиной <u>{{ result1.length }}</u> м. Заземляющее устройство заглублено на глубину <u>{{ result1.depth }}</u> м. Сопротивление
+                    заземляющего устройства <u>{{ result1.total_resistance }}</u> Ом, что не превышает нормативного значения <u>{{ result1.normative_resistance }}</u> Ом</strong>
+            </p>
+        </div>
+    </div>
+{% endblock %}

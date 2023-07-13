@@ -1,0 +1,55 @@
+.text {
+    font-size: 1.3em;
+}
+
+.margin-1 {
+    margin-top: 13em!important;
+}
+
+@media (min-width:  0px) and (max-width: 780px){
+    .text {
+        font-size: 1em!important;
+    }
+}
+
+@media (min-width:  0px) and (max-width: 1420px){
+    .margin-1 {
+        margin-top: 7em!important;
+    }
+}
+
+@media (min-width:  0px) and (max-width: 1120px){
+    .margin-1 {
+        margin-top: 3em!important;
+    }
+}
+
+@media (min-width:  0px) and (max-width: 1000px){
+    .left {
+        display: none;
+    }
+}
+
+@media (min-width:  1001px) and (max-width: 10000px){
+    .right {
+        display: none;
+    }
+}
+
+@media (min-width:  0px) and (max-width: 650px){
+    .margin-1 {
+        margin-top: 1em!important;
+    }
+}
+
+@media (min-width:  0px) and (max-width: 450px){
+    .margin-1 {
+        margin-top: 0em!important;
+    }
+}
+
+@media (min-width:  0px) and (max-width: 400px){
+    .margin-1 {
+        margin-top: 1em!important;
+    }
+}
