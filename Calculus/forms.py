@@ -56,7 +56,8 @@ class Task2Form(forms.ModelForm):
             phase_material_id=task2.phase_material,
             phase_quantity=task2.phase_square,
             diameter=task2.distance_between_conductors,
-            tok_power=task2.amperage_nominal
+            tok_power=task2.amperage_nominal,
+            type_electro=task2.type_electro
         )
         result2 = ResultTask2(task=task2, square=result2())
         result2.save()
